@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ООО "Топливная Компания" - оптовые поставки топлива</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dolphin-logo::after {
+            content: "";
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50"><path d="M10,25 Q30,0 50,25 Q70,50 90,25" stroke="%2306b6d4" fill="none" stroke-width="3"/></svg>');
+            background-repeat: no-repeat;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        .fuel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.2);
+        }
+        #map {
+            height: 300px;
+            width: 100%;
+            border-radius: 0.5rem;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #06b6d4;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Шапка с навигацией -->
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <h1 class="text-2xl font-bold text-cyan-600 dolphin-logo">ООО "Топливная Компания"</h1>
+                </div>
+                <nav class="flex space-x-1 md:space-x-6">
+                    <a href="#about" class="nav-link px-3 py-2 text-gray-700 hover:text-cyan-600">О компании</a>
+                    <a href="#products" class="nav-link px-3 py-2 text-gray-700 hover:text-cyan-600">Топливо</a>
+                    <a href="#form" class="nav-link px-3 py-2 text-gray-700 hover:text-cyan-600">Заявка</a>
+                    <a href="#contacts" class="nav-link px-3 py-2 text-gray-700 hover:text-cyan-600">Контакты</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Герой-баннер -->
+    <section class="bg-gradient-to-r from-cyan-600 to-cyan-400 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Оптовые поставки топлива по России</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Надежные поставки качественного топлива с 1990 года</p>
+            <a href="#form" class="bg-white text-cyan-600 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 inline-block shadow-lg">Оставить заявку</a>
+        </div>
+    </section>
+
+    <!-- О компании -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-cyan-600">О компании</h2>
+            
+            <div class="flex flex-col md:flex-row items-center mb-12">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <p class="text-lg mb-6">Компания работает с 1990 года. Основное направление — оптовые поставки топлива по России и в страны СНГ.</p>
+                    <p class="text-lg">За годы работы мы зарекомендовали себя как надежного партнера для сотен предприятий различных отраслей промышленности, сельского хозяйства и транспорта.</p>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1617087864098-24c673a1a261?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Топливная компания" class="rounded-lg shadow-lg w-full">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-cyan-50 p-6 rounded-lg border-l-4 border-cyan-500 hover:bg-cyan-100 transition duration-300">
+                    <div class="text-cyan-600 mb-4 text-3xl"><i class="fas fa-truck"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Собственный автопарк</h3>
+                    <p class="text-gray-700">Более 50 современных топливозаправщиков для оперативной доставки</p>
+                </div>
+                
+                <div class="bg-cyan-50 p-6 rounded-lg border-l-4 border-cyan-500 hover:bg-cyan-100 transition duration-300">
+                    <div class="text-cyan-600 mb-4 text-3xl"><i class="fas fa-medal"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Надежность и опыт</h3>
+                    <p class="text-gray-700">Более 30 лет успешной работы на топливном рынке</p>
+                </div>
+                
+                <div class="bg-cyan-50 p-6 rounded-lg border-l-4 border-cyan-500 hover:bg-cyan-100 transition duration-300">
+                    <div class="text-cyan-600 mb-4 text-3xl"><i class="fas fa-hand-holding-usd"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Гибкие условия оплаты</h3>
+                    <p class="text-gray-700">Индивидуальный подход к каждому клиенту</p>
+                </div>
+                
+                <div class="bg-cyan-50 p-6 rounded-lg border-l-4 border-cyan-500 hover:bg-cyan-100 transition duration-300">
+                    <div class="text-cyan-600 mb-4 text-3xl"><i class="fas fa-clock"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Доставка 24/7</h3>
+                    <p class="text-gray-700">Круглосуточная работа без выходных и праздников</p>
+                </div>
+                
+                <div class="bg-cyan-50 p-6 rounded-lg border-l-4 border-cyan-500 hover:bg-cyan-100 transition duration-300">
+                    <div class="text-cyan-600 mb-4 text-3xl"><i class="fas fa-headset"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Квалифицированные менеджеры</h3>
+                    <p class="text-gray-700">Профессиональные консультации и сопровождение</p>
+                </div>
+                
+                <div class="bg-cyan-50 p-6 rounded-lg border-l-4 border-cyan-500 hover:bg-cyan-100 transition duration-300">
+                    <div class="text-cyan-600 mb-4 text-3xl"><i class="fas fa-certificate"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Сертифицированное топливо</h3>
+                    <p class="text-gray-700">Полное соответствие ГОСТ и техническим регламентам</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Виды топлива -->
+    <section id="products" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-cyan-600">Виды топлива</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="fuel-card bg-white p-6 rounded-lg shadow-md transition duration-300 border-t-4 border-cyan-500">
+                    <div class="text-cyan-600 mb-4 text-4xl"><i class="fas fa-gas-pump"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Бензин АИ-92</h3>
+                    <p class="mb-4 text-gray-700">Высококачественный бензин с октановым числом 92</p>
+                    <div class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm inline-block">от 45 ₽/литр</div>
+                </div>
+                
+                <div class="fuel-card bg-white p-6 rounded-lg shadow-md transition duration-300 border-t-4 border-cyan-500">
+                    <div class="text-cyan-600 mb-4 text-4xl"><i class="fas fa-gas-pump"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Бензин АИ-95</h3>
+                    <p class="mb-4 text-gray-700">Премиальный бензин с улучшенными характеристиками</p>
+                    <div class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm inline-block">от 50 ₽/литр</div>
+                </div>
+                
+                <div class="fuel-card bg-white p-6 rounded-lg shadow-md transition duration-300 border-t-4 border-cyan-500">
+                    <div class="text-cyan-600 mb-4 text-4xl"><i class="fas fa-gas-pump"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Бензин АИ-100</h3>
+                    <p class="mb-4 text-gray-700">Спортивный бензин для высокофорсированных двигателей</p>
+                    <div class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm inline-block">от 60 ₽/литр</div>
+                </div>
+                
+                <div class="fuel-card bg-white p-6 rounded-lg shadow-md transition duration-300 border-t-4 border-cyan-500">
+                    <div class="text-cyan-600 mb-4 text-4xl"><i class="fas fa-oil-can"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Дизельное топливо</h3>
+                    <p class="mb-4 text-gray-700">Летнее и зимнее ДТ с улучшенными низкотемпературными свойствами</p>
+                    <div class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm inline-block">от 48 ₽/литр</div>
+                </div>
+                
+                <div class="fuel-card bg-white p-6 rounded-lg shadow-md transition duration-300 border-t-4 border-cyan-500">
+                    <div class="text-cyan-600 mb-4 text-4xl"><i class="fas fa-fire"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Сжиженный газ</h3>
+                    <p class="mb-4 text-gray-700">Пропан-бутановая смесь для газобаллонного оборудования</p>
+                    <div class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm inline-block">от 25 ₽/литр</div>
+                </div>
+                
+                <div class="fuel-card bg-white p-6 rounded-lg shadow-md transition duration-300 border-t-4 border-cyan-500">
+                    <div class="text-cyan-600 mb-4 text-4xl"><i class="fas fa-tools"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Специальные смеси</h3>
+                    <p class="mb-4 text-gray-700">Индивидуальные составы по техническому заданию</p>
+                    <div class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm inline-block">Цена по запросу</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма заявки -->
+    <section id="form" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-cyan-600">Оставить заявку</h2>
+            
+            <div class="max-w-2xl mx-auto bg-cyan-50 rounded-lg p-8 shadow-md">
+                <form id="fuelForm" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Ваше имя *</label>
+                        <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-cyan-500 focus:border-cyan-500">
+                    </div>
+                    
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Телефон *</label>
+                        <input type="tel" id="phone" name="phone" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-cyan-500 focus:border-cyan-500" placeholder="+7 (___) ___-__-__">
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-cyan-500 focus:border-cyan-500" placeholder="example@mail.com">
+                    </div>
+                    
+                    <div>
+                        <label for="fuelType" class="block text-sm font-medium text-gray-700 mb-1">Тип топлива *</label>
+                        <select id="fuelType" name="fuelType" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-cyan-500 focus:border-cyan-500">
+                            <option value="">Выберите тип топлива</option>
+                            <option value="gas">Сжиженный газ</option>
+                            <option value="92">Бензин АИ-92</option>
+                            <option value="95">Бензин АИ-95</option>
+                            <option value="100">Бензин АИ-100</option>
+                            <option value="diesel">Дизельное топливо</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="volume" class="block text-sm font-medium text-gray-700 mb-1">Объем (литры) *</label>
+                        <input type="number" id="volume" name="volume" min="100" step="100" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-cyan-500 focus:border-cyan-500" placeholder="1000">
+                    </div>
+                    
+                    <div>
+                        <label for="comment" class="block text-sm font-medium text-gray-700 mb-1">Комментарий</label>
+                        <textarea id="comment" name="comment" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-cyan-500 focus:border-cyan-500" placeholder="Дополнительная информация"></textarea>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <input type="checkbox" id="agree" name="agree" required class="h-4 w-4 text-cyan-600 focus:ring-cyan-500 border-gray-300 rounded">
+                        <label for="agree" class="ml-2 block text-sm text-gray-700">
+                            Я согласен с <a href="#" class="text-cyan-600 hover:underline">политикой конфиденциальности</a>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-cyan-600 text-white py-3 px-6 rounded-md hover:bg-cyan-700 transition duration-300 font-medium shadow-md">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contacts" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-cyan-600">Контакты</h2>
+            
+            <div class="flex flex-col lg:flex-row gap-8">
+                <div class="lg:w-1/2 space-y-6">
+                    <div class="flex items-start bg-white p-6 rounded-lg shadow-sm">
+                        <div class="text-cyan-600 text-2xl mr-4 mt-1"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">Телефон</h3>
+                            <p class="text-lg"><a href="tel:+78001234567" class="hover:text-cyan-700 transition">8 (800) 123-45-67</a></p>
+                            <p class="text-gray-600">Бесплатный звонок по России</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start bg-white p-6 rounded-lg shadow-sm">
+                        <div class="text-cyan-600 text-2xl mr-4 mt-1"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">Email</h3>
+                            <p class="text-lg"><a href="mailto:info@toplivnaya-kompaniya.ru" class="hover:text-cyan-700 transition">info@toplivnaya-kompaniya.ru</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start bg-white p-6 rounded-lg shadow-sm">
+                        <div class="text-cyan-600 text-2xl mr-4 mt-1"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">Адрес</h3>
+                            <p class="text-lg">г. Москва, ул. Топливная, д. 15, офис 301</p>
+                            <p class="text-gray-600">Режим работы: Пн-Пт с 9:00 до 18:00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start bg-white p-6 rounded-lg shadow-sm">
+                        <div class="text-cyan-600 text-2xl mr-4 mt-1"><i class="fas fa-users"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">Социальные сети</h3>
+                            <div class="flex space-x-4 mt-2">
+                                <a href="#" class="text-cyan-600 hover:text-cyan-800 text-2xl" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                                <a href="#" class="text-cyan-600 hover:text-cyan-800 text-2xl" title="Telegram"><i class="fab fa-telegram"></i></a>
+                                <a href="#" class="text-cyan-600 hover:text-cyan-800 text-2xl" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div id="map" class="bg-white p-4 rounded-lg shadow-sm">
+                        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a&amp;source=constructor" width="100%" height="100%" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="bg-cyan-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-cyan-200">© 2023 ООО "Топливная Компания". Все права защищены.</p>
+                </div>
+                <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
+                    <a href="#" class="text-cyan-200 hover:text-white transition">Политика конфиденциальности</a>
+                    <a href="#" class="text-cyan-200 hover:text-white transition">Договор оферты</a>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-cyan-200 hover:text-white text-xl"><i class="fab fa-vk"></i></a>
+                        <a href="#" class="text-cyan-200 hover:text-white text-xl"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="text-cyan-200 hover:text-white text-xl"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Обработка формы
+        document.getElementById('fuelForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Валидация телефона
+            const phone = document.getElementById('phone').value;
+            if (!/^(\+7|8)[\s(]?\d{3}[)\s]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/.test(phone)) {
+                alert('Пожалуйста, введите корректный номер телефона');
+                return;
+            }
+            
+            // Здесь должна быть логика отправки формы
+            alert('Спасибо за вашу заявку! Наш менеджер свяжется с вами в ближайшее время.');
+            this.reset();
+        });
+
+        // Маска для телефона
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+            e.target.value = !x[2] ? x[1] : x[1] + ' (' + x[2] + ') ' + x[3] + (x[4] ? '-' + x[4] : '') + (x[5] ? '-' + x[5] : '');
+        });
+
+        // Плавная прокрутка для якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
